@@ -1,0 +1,46 @@
+- name: " build_virtual_environments | Cleanup"
+  ansible.builtin.file:
+    path: '/tmp/venv'
+    state: absent
+
+- name: "Test memcached | build_virtual_environments | Build a virtual environment face 1 init virtual env"
+  pip:
+    name: pip
+    virtualenv: '/tmp/venv'
+    state: latest
+
+- name: "Test memcached | build_virtual_environments | Build a virtual environment face 2 : update pip)"
+  pip:
+    name: ['virt-lightning']
+    virtualenv: '/tmp/venv'
+    state: latest
+
+- name: "Test memcached | create a virtual environment for python "
+  ansible.builtin.template:
+    src: ansible.cfg.j2
+    dest: ansible.cfg
+  when: testenv == "virtlightning"
+
+- name: "Test memcached | Create a disposable ansible conf"
+  ansible.builtin.template:
+    src: ansible.cfg.j2
+    dest: ansible.cfg
+  when: testenv == "virtlightning"
+
+- name: "Test memcached | Build the virtlighning memcached test env"
+  ansible.builtin.template:
+    src: virt-lightning.yaml.j2
+    dest: virt-lightning.yaml 
+  when: testenv == "virtlightning"
+
+- name: "Test memcached | Build the vagrant memcached test env"
+  ansible.builtin.template:
+    src: Vagrantfile.j2
+    dest: Vagrantfile 
+  when: testenv == "vagrant"
+
+- name: "Test memcached | Build the virtlighning memcached test env"
+  ansible.builtin.template:
+    src: vl-runme.sh.j2
+    dest: runme.sh 
+  when: testenv == "virtlightning"

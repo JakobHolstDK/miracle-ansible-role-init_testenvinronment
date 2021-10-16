@@ -1,0 +1,4 @@
+name: Init_testenvironment | virtlightning
+- include: virtlightning.yaml
+when: {{ test}}
+  

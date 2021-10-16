@@ -1,0 +1,16 @@
+---
+- testenv: "virtlightning"
+- testservers:
+#- { name: "testa",  distro: "centos8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/centos8/versions/3.4.2/providers/virtualbox.box" }
+#- { name: "testb",  distro: "centos8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/centos8/versions/3.4.2/providers/virtualbox.box" }
+#- { name: "testc",  distro: "centos8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/centos8/versions/3.4.2/providers/virtualbox.box" }
+#- { name: "testa",  distro: "rhel8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/rhel8/versions/3.4.2/providers/virtualbox.box" }
+#- { name: "testb",  distro: "rhel8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/rhel8/versions/3.4.2/providers/virtualbox.box" }
+#- { name: "testc",  distro: "rhel8 ", memory: 1024, role: "memcache", url: "https://vagrantcloud.com/generic/boxes/rhel8/versions/3.4.2/providers/virtualbox.box" }
+- { name: "testa",  distro: "rhel-8.4", memory: 1024, vcpus: 2,  role: "memcache", root_disk_size: 50 }
+- { name: "testb",  distro: "rhel-8.4", memory: 1024, vcpus: 2,  role: "memcache", root_disk_size: 50 }
+- { name: "testc",  distro: "rhel-8.4", memory: 1024, vcpus: 2,  role: "memcache", root_disk_size: 50 }
+- testroles:
+  - { role: "memcached", filter: "test" }
+- distros:
+  - { distro: "rhel-8.4, vagrant_url: "https://vagrantcloud.com/generic/boxes/rhel8/versions/3.4.2/providers/virtualbox.box", vl_url: "https://access.cdn.redhat.com/content/origin/files/sha256/df/df9660e770711f797b311a04946ce45db19843ddb1c60ccadca8b77fa0444e4f/rhel-8.4-x86_64-kvm.qcow2" }
